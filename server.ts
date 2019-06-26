@@ -17,11 +17,12 @@ app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/Demo/index.html'));
 });
 
-app.get('/db/*', async (req, res) => {
+app.get('/db', async (req, res) => {
     try {
       const client = await pool.connect()
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};
+      console.log(results);
       client.release();
       return results;
     } catch (err) {
