@@ -14,11 +14,11 @@ const pool = new Pool({
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/Demo'));
 
-app.get('/*', function (req, res) {
+app
+.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/Demo/index.html'));
 })
-
-app.get('/db', async (req, res) => {
+.get('/db', async (req, res) => {
     try {
         const client = await pool.connect()
         const result = await client.query('SELECT * FROM test_table');
