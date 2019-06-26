@@ -6,10 +6,10 @@ const pool = new Pool({
   ssl: true
 });
 
-export const testData = Router();
+export const test = Router();
 
 // Initial get everything route
-testData.get('/', (req, res, next) => {
+test.get('/', (req, res, next) => {
     
     try {
         const client = pool.connect()
